@@ -11,6 +11,7 @@ public class TicketListView {
     private JPanel MainPanel;
     private JList ticketsList;
     private JLabel selectedTicketValue;
+    private JLabel selectedRouteValue;
 
     private void createUIComponents() {
         ticketsList = new JList<Ticket>();

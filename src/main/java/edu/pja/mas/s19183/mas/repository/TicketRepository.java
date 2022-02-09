@@ -1,5 +1,6 @@
 package edu.pja.mas.s19183.mas.repository;
 
+import edu.pja.mas.s19183.mas.model.PassengerRoute;
 import edu.pja.mas.s19183.mas.model.Ticket;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -11,8 +12,13 @@ import java.util.List;
 public interface TicketRepository extends CrudRepository<Ticket, Long> {
 
 
-    @Query("from Ticket  as e where e.soldTickets.id = :passengerrouteId")
-    List<Ticket> findTicketsByPassengerRouteId(@Param("passengerrouteId") long passengerrouteId);
+    //OLD
+    //@Query("from Ticket  as e where e.soldTickets.id = :passengerrouteId")
+    //List<Ticket> findTicketsByPassengerRouteId(@Param("passengerrouteId") long passengerrouteId);
+
+    //NEW
+    @Query("from Ticket as e where e.soldTickets = :soldTickets")
+    List<Ticket> findBySoldTickets(@Param("soldTickets") PassengerRoute soldTickets);
 
     @Query(value = "insert into Ticket (id, ticketNumber, cost, passenger_id, passsengerroute_id) values :id, :ticketnumber, :cost, :passengerid, :passengerrouteId", nativeQuery = true)
     void createTicket(@Param("id") Long id, @Param("cost") double cost, @Param("ticketnumber") String ticketnumber, @Param("passengerid") long passengerid, @Param("passengerrouteId") long passengerrouteId);

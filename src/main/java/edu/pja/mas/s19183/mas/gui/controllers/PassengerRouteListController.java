@@ -43,8 +43,9 @@ public class PassengerRouteListController {
             if (view.getPassengerRouteList().getSelectedValue() == null) return;
             PassengerRoute selectedPassengerRoute = (PassengerRoute) view.getPassengerRouteList().getSelectedValue();
             view.getSelectedRouteValue().setText(selectedPassengerRoute.getRouteNumber());
-            List<Ticket> ticketsByRoute = ticketService.getTicketsByRouteId(selectedPassengerRoute.getId());
-            ticketListController.showGUI(mainWindowController, ticketsByRoute);
+            //List<Ticket> ticketsByRoute = ticketService.getTicketsByRouteId(selectedPassengerRoute.getId());
+            List<Ticket> ticketsList = ticketService.getSoldTickets(selectedPassengerRoute);
+            ticketListController.showGUI(mainWindowController, ticketsList);
         });
     }
 

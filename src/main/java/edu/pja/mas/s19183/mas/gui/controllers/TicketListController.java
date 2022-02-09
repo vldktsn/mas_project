@@ -1,7 +1,10 @@
 package edu.pja.mas.s19183.mas.gui.controllers;
 
+import edu.pja.mas.s19183.mas.gui.view.PassengerRouteListView;
 import edu.pja.mas.s19183.mas.gui.view.TicketListView;
+import edu.pja.mas.s19183.mas.model.PassengerRoute;
 import edu.pja.mas.s19183.mas.model.Ticket;
+import edu.pja.mas.s19183.mas.service.PassengerRouteService;
 import edu.pja.mas.s19183.mas.service.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -34,6 +37,7 @@ public class TicketListController {
             if (view.getTicketsList().getSelectedValue() == null) return;
             Ticket selectedTicket = (Ticket) view.getTicketsList().getSelectedValue();
             view.getSelectedTicketValue().setText(selectedTicket.getTicketNumber());
+            view.getSelectedRouteValue().setText(selectedTicket.getSoldTickets().getRouteNumber());
         });
     }
 

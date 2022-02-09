@@ -1,10 +1,7 @@
 package edu.pja.mas.s19183.mas.model;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -32,6 +29,7 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "passsengerroute_id", nullable = false)
     @NotNull
+    @EqualsAndHashCode.Exclude
     private PassengerRoute soldTickets;
 
     @ManyToOne
